@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" 
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>ERAS Shopping Demo</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/payment.css}"/>
+        <script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}" ></script>
+        <script type="text/javascript" th:src="@{/js/modal.js}" ></script>
+        <script type="text/javascript" th:src="@{/js/order.js}" ></script>
+    </head>
+    <body>
+    <div class="backButton" id="reviewBack">back</div>
+       <a th:if="${role != 'ADMIN' AND  role != 'USER'}" 
+       class="loginbutton" th:href="@{/login}">
+		  Login
+		</a>
+		<a th:if="${role == 'ADMIN' OR  role == 'USER'}" 
+		class="loginbutton" th:href="@{/logout}">
+		  Logout
+		</a>
+			<br>
+			<br>
+		<div class="confirmTitle">Review Order</div>
+		
+		<ul id="addressGrid" class="addressGrid">
+			<li>
+			<div class="addressLabels">Shipping Address</div>
+				<label class="addressLabels" for="sfirstname">First name:</label><div class="reviewinfo" id="sfirstname" th:text="${userdetails.first_name}" ></div><br>
+				<label class="addressLabels" for="slastname">Last name:</label> <div class="reviewinfo" id="slastname" th:text="${userdetails.last_name}"></div><br>
+				<label class="addressLabels" for="saddress1">Address 1:</label> <div class="reviewinfo" id="saddress1"  th:text="${userdetails.shipping_address_1}"></div><br>
+				<label class="addressLabels" for="saddress2">Address 2:</label> <div class="reviewinfo" id="saddress2" th:text="${userdetails.shipping_address_2}"></div><br>
+				<label class="addressLabels" for="scity">City:</label> <div class="reviewinfo" id="scity"  th:text="${userdetails.shipping_city}"></div><br>
+				<label class="addressLabels" for="sstate">State:</label> <div class="reviewinfo" id="sstate"  th:text="${userdetails.shipping_state}"></div><br>
+				<label class="addressLabels" for="scountry">Country:</label> <div class="reviewinfo" id="scountry" th:text="${userdetails.shipping_country}"></div><br>
+				<label class="addressLabels" for="spost">Post Code:</label> <div class="reviewinfo" id="spost" th:text="${userdetails.shipping_postcode}"></div><br>
+				<label class="addressLabels" for="sphone">Phone:</label> <div class="reviewinfo" id="sphone" th:text="${userdetails.shipping_phone}"></div>
+				<br>
+				<br>
+			</li>	
+			<li>	
+			<div class="addressLabels">Billing Address</div>
+				<label class="addressLabels" for="bfirstname">First name:</label><div class="reviewinfo" id="bfirstname" th:text="${userdetails.billing_first_name}"></div><br>
+				<label class="addressLabels" for="blastname">Last name:</label> <div class="reviewinfo" id="blastname" th:text="${userdetails.billing_last_name}"></div><br>
+				<label class="addressLabels" for="baddress1">Address 1:</label> <div class="reviewinfo" id="baddress1" th:text="${userdetails.billing_address_1}"></div><br>
+				<label class="addressLabels" for="baddress2">Address 2:</label> <div class="reviewinfo" id="baddress2" th:text="${userdetails.billing_address_2}"></div><br>
+				<label class="addressLabels" for="bcity">City:</label> <div class="reviewinfo" id="bcity" th:text="${userdetails.billing_city}"></div><br>
+				<label class="addressLabels" for="bstate">State:</label> <div class="reviewinfo" id="bstate" th:text="${userdetails.billing_state}"></div><br>
+				<label class="addressLabels" for="bcountry">Country:</label> <div class="reviewinfo" id="bcountry" th:text="${userdetails.billing_country}"></div><br>
+				<label class="addressLabels" for="bpost">Post Code:</label> <div class="reviewinfo" id="bpost" th:text="${userdetails.billing_postcode}"></div><br>
+				<label class="addressLabels" for="bphone">Phone:</label> <div class="reviewinfo" id="bphone" th:text="${userdetails.billing_phone}"></div>
+				<br>
+				<br>
+			</li>	
+		</ul>
+		
+		
+		<ul id="cartItems">
+			<li class="cartListItem cartProduct" th:if="${existingCart != '' &&  existingCart != null}" th:each="product : ${existingCart}">
+			
+				<img class="cartproductImage" th:src="${product.image}">
+				<div class="cartProductName" th:id="${product.id}" th:name="${product.name}" th:text="${product.name}"></div>
+				<div class="cartQuantityTimes">x</div>
+				<div class="cartProductQuantity" th:quantity="${product.inventory}" th:text="${product.inventory}">1</div>
+				<div class="cartProductPrice" th:price="${product.price}" th:text="${'$' + product.price}"></div>
+			
+			</li>
+			<li th:if="${existingCart != '' &&  existingCart != null}" class="cartListItem">
+				<div class="totalprice" th:totalprice="${cartTotalPrice}" th:text="${'Total Price: $' + cartTotalPrice}" ></div>
+			</li>
+		</ul>
+		
+		
+		
+		<div class="placeOrder" id="placeOrder">Place Order</div>
+		
+    </body>
+    
+</html>
