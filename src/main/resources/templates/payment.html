@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" 
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>ERAS Shopping Demo</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/payment.css}"/>
+        <script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}" ></script>
+        <script type="text/javascript" th:src="@{/js/modal.js}" ></script>
+        <script type="text/javascript" th:src="@{/js/order.js}" ></script>
+    </head>
+    <body>
+    	<div class="backButton" id="paymentBack">back</div>
+       <a th:if="${role != 'ADMIN' AND  role != 'USER'}" 
+       class="loginbutton" th:href="@{/login}">
+		  Login
+		</a>
+		<a th:if="${role == 'ADMIN' OR  role == 'USER'}" 
+		class="loginbutton" th:href="@{/logout}">
+		  Logout
+		</a>
+			<br>
+			<br>
+		<div class="confirmTitle">Payment and Address</div>
+		
+		<ul id="addressGrid" class="addressGrid">
+			<li>
+			<div class="addressLabels">Shipping Address</div>
+				<label class="addressLabels" for="sfirstname">First name:</label><input type="text" id="sfirstname" name="sfirstname"  th:field="${userdetails.first_name}" ><br>
+				<label class="addressLabels" for="slastname">Last name:</label> <input type="text" id="slastname" name="slastname" th:field="${userdetails.last_name}"><br>
+				<label class="addressLabels" for="saddress1">Address 1:</label> <input type="text" id="saddress1" name="saddress1" th:field="${userdetails.shipping_address_1}"><br>
+				<label class="addressLabels" for="saddress2">Address 2:</label> <input type="text" id="saddress2" name="saddress2" th:field="${userdetails.shipping_address_2}"><br>
+				<label class="addressLabels" for="scity">City:</label> <input type="text" id="scity" name="scity" "saddress2" th:field="${userdetails.shipping_city}"><br>
+				<label class="addressLabels" for="sstate">State:</label> <input type="text" id="sstate" name="sstate" th:field="${userdetails.shipping_state}"><br>
+				<label class="addressLabels" for="scountry">Country:</label> <input type="text" id="scountry" name="scountry" th:field="${userdetails.shipping_country}"><br>
+				<label class="addressLabels" for="spost">Post Code:</label> <input type="text" id="spost" name="spost" th:field="${userdetails.shipping_postcode}"><br>
+				<label class="addressLabels" for="sphone">Phone:</label> <input type="text" id="sphone" name="sphone" th:field="${userdetails.shipping_phone}">
+				<br>
+				<br>
+			</li>	
+			<li>	
+			<div class="addressLabels">Billing Address</div>
+				<label class="addressLabels" for="bfirstname">First name:</label><input type="text" id="bfirstname" name="bfirstname" th:field="${userdetails.billing_first_name}"><br>
+				<label class="addressLabels" for="blastname">Last name:</label> <input type="text" id="blastname" name="blastname" th:field="${userdetails.billing_last_name}"><br>
+				<label class="addressLabels" for="baddress1">Address 1:</label> <input type="text" id="baddress1" name="baddress1" th:field="${userdetails.billing_address_1}"><br>
+				<label class="addressLabels" for="baddress2">Address 2:</label> <input type="text" id="baddress2" name="baddress2" th:field="${userdetails.billing_address_2}"><br>
+				<label class="addressLabels" for="bcity">City:</label> <input type="text" id="bcity" name="bcity" th:field="${userdetails.billing_city}"><br>
+				<label class="addressLabels" for="bstate">State:</label> <input type="text" id="bstate" name="bstate" th:field="${userdetails.billing_state}"><br>
+				<label class="addressLabels" for="bcountry">Country:</label> <input type="text" id="bcountry" name="bcountry" th:field="${userdetails.billing_country}"><br>
+				<label class="addressLabels" for="bpost">Post Code:</label> <input type="text" id="bpost" name="bpost" th:field="${userdetails.billing_postcode}"><br>
+				<label class="addressLabels" for="bphone">Phone:</label> <input type="text" id="bphone" name="bphone" th:field="${userdetails.billing_phone}">
+				<br>
+				<br>
+			</li>	
+		</ul>
+		
+			<br>
+			<br>
+		<div class="paymentLabels">Payment</div>
+		<label class="paymentLabels" for="ccnumber">Card Number:</label><input type="text" id="ccnumber" name="ccnumber" th:field="${userdetails.card_number}"><br>
+		<label class="paymentLabels" for="ccname">Card Holder Name:</label><input type="text" id="ccname" name="ccname" th:field="${userdetails.card_name}"><br>
+		<label class="paymentLabels" for="expdate">Expiration Date:</label>
+		<select id="expdatemonth" name="expdatemonth">
+		    <option value="1">1</option>
+		    <option value="2">2</option>
+		    <option value="3">3</option>
+		    <option value="4">4</option>
+		    <option value="5">5</option>
+		    <option value="6">6</option>
+		    <option value="7">7</option>
+		    <option value="8">8</option>
+		    <option value="9">9</option>
+		    <option value="10">10</option>
+		    <option value="11">11</option>
+		    <option value="12">12</option>
+		 </select>
+		<select id="expdateday" name="expdateday">
+		    <option value="1">1</option>
+		    <option value="2">2</option>
+		    <option value="3">3</option>
+		    <option value="4">4</option>
+		    <option value="5">5</option>
+		    <option value="6">6</option>
+		    <option value="7">7</option>
+		    <option value="8">8</option>
+		    <option value="9">9</option>
+		    <option value="10">10</option>
+		    <option value="11">11</option>
+		    <option value="12">12</option>
+		    <option value="13">13</option>
+		    <option value="14">14</option>
+		    <option value="15">15</option>
+		    <option value="16">16</option>
+		    <option value="17">17</option>
+		    <option value="18">18</option>
+		    <option value="19">19</option>
+		    <option value="20">20</option>
+		    <option value="21">21</option>
+		    <option value="22">22</option>
+		    <option value="23">23</option>
+		    <option value="24">24</option>
+		    <option value="25">25</option>
+		    <option value="26">26</option>
+		    <option value="27">27</option>
+		    <option value="28">28</option>
+		    <option value="29">29</option>
+		    <option value="30">30</option>
+		 </select>
+		
+		
+		
+		<div class="paymentButton" id="reroutetoPayment">Proceed to Review Order</div>
+		
+    </body>
+    
+</html>

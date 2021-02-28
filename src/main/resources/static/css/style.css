@@ -1,0 +1,207 @@
+@charset "ISO-8859-1";
+body{
+	background-color: black;	
+}
+
+.productList{
+	display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 25px;
+    grid-auto-rows: auto;
+    margin: 25px;
+    list-style: none;
+}
+
+.productImage{
+	width: 250px;
+}
+
+.productName, .productPrice, .productImage{
+	display: block;
+	margin: auto;
+    text-align: center;
+    color: white;
+}
+
+.productName:hover, .productImage:hover{
+	cursor: pointer;
+}
+
+.productName:hover{
+	text-decoration: underline;
+}
+.productImage:hover{
+	opacity: 0.5;
+}
+
+#searchbox{
+	text-align: center;
+	
+}
+#searchbar{
+	width: 35%;
+}
+
+.loginbutton{
+	float: right;
+}
+.displayNone{
+	display: none;
+}
+
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin: auto;
+  padding: 20px;
+  width: 70%;
+  height: 500px;
+  margin-bottom: 100px;
+  
+}
+
+
+
+#orderSubmit{
+	float: right;
+}
+
+.addToCartButton, 
+.checkoutButton, 
+.paymentButton,
+.backButton{
+	background-color: black;
+    border: 2px solid white;
+    padding: 6px 30px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 115px;
+    text-align: center;
+    margin: auto;
+}
+
+#cartModalContent{
+	color: white;
+}
+
+.loginbutton:hover, 
+#cart:hover, 
+.addToCartButton:hover, 
+.checkoutButton:hover,
+.paymentButton:hover,
+.backButton:hover {	
+	cursor: pointer;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+.loginbutton, #cart{
+	background-color: black;
+    border: 2px solid white;
+    padding: 6px 30px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+#cart{
+	width: 40px;
+}
+
+#username{
+	color: white;
+}
+
+#cartItems{
+	overflow-y: auto;
+    height: 80%;
+}
+.cartListItem{
+	list-style-type: none;
+	border-bottom: 2px solid white;
+    margin-bottom: 2%;
+}
+
+.cartListItem > * {
+  vertical-align: middle;
+}
+.cartproductImage{
+	width: 100px;
+	height: 100px;
+}
+.cartQuantityTimes{
+	margin-left: 10%;
+	color: white;
+}
+
+
+.cartProductQuantity{
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    padding-left: 20px;
+    
+}
+
+.cartProductPrice{
+	margin-left: 10%;
+    color: white;    
+}
+
+.cartproductImage, 
+.cartProductName, 
+.cartProductQuantity,
+.cartQuantityTimes,
+.cartProductPrice{
+	display: inline;
+}
+
+
+.cartProductName{
+	padding-left: 5%;
+}
+
+.totalprice{
+	color: white;
+}
+#closeModal{
+	color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+	border: 2px solid white;
+	float: right;
+}
+
+#closeModal:hover {	
+	cursor: pointer;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+.confirmTitle{
+	color: white;
+    margin-top: 10px;
+}
+
+.backButton{
+	display: inline;
+}
+

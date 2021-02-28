@@ -1,0 +1,106 @@
+@charset "ISO-8859-1";
+
+body{
+	background-color: black;	
+}
+
+.confirmTitle{
+	color: white;
+}
+
+.addressGrid{
+	display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 25px;
+    grid-auto-rows: auto;
+    margin: 25px;
+    list-style: none;
+}
+
+.addressLabels, .paymentLabels{
+	color: white;
+}
+
+.loginbutton, .paymentButton, .placeOrder, .backtostore, .backButton{
+	background-color: black;
+    border: 2px solid white;
+    padding: 6px 30px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 115px;
+    text-align: center;
+    margin: auto;
+    text-decoration: none;
+}
+
+.loginbutton:hover, .paymentButton:hover, .placeOrder:hover, .backtostore:hover, .backButton:hover {	
+	cursor: pointer;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+#cartItems{
+	overflow-y: auto;
+    height: 80%;
+}
+.cartListItem{
+	list-style-type: none;
+	border-bottom: 2px solid white;
+    margin-bottom: 2%;
+}
+
+.cartListItem > * {
+  vertical-align: middle;
+}
+.cartproductImage{
+	width: 100px;
+	height: 100px;
+}
+.cartQuantityTimes{
+	margin-left: 10%;
+	color: white;
+}
+
+
+.cartProductQuantity{
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    padding-left: 20px;
+    
+}
+
+.cartProductPrice{
+	margin-left: 10%;
+    color: white;    
+}
+
+.cartproductImage, 
+.cartProductName, 
+.cartProductQuantity,
+.cartQuantityTimes,
+.cartProductPrice{
+	display: inline;
+}
+
+
+.cartProductName{
+	padding-left: 5%;
+}
+
+.totalprice{
+	color: white;
+}
+
+.reviewinfo{
+	color: white;
+	display: inline;
+}
+
+.backButton{
+	display: inline;
+}
+.loginbutton {
+    float: right;
+}
